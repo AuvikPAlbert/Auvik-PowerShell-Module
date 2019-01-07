@@ -16,9 +16,18 @@ function Add-AuvikBaseURI {
     }
 
     switch ($data_center) {
-        'US' {$BaseURI = 'https://auvikapi.us1.my.auvik.com'}
-        'EU' {$BaseURI = 'https://auvikapi.eu1.my.auvik.com'}
-        Default {}
+        'US1' {$BaseURI = 'https://auvikapi.us1.my.auvik.com'}
+        'US2' {$BaseURI = 'https://auvikapi.us2.my.auvik.com'}
+
+        'EU1' {$BaseURI = 'https://auvikapi.eu1.my.auvik.com'}
+        'EU2' {$BaseURI = 'https://auvikapi.eu2.my.auvik.com'}
+        
+        'AU1' {$BaseURI = 'https://auvikapi.au1.my.auvik.com'}
+        Default
+        {
+            # Hitting the top level app (without specifying the cluster) should also redirect to the appropriate cluster with an HTTP 308
+            $BaseURI = "https://auvikapi.my.auvik.com"}
+        }
     }
 
     Set-Variable -Name "Auvik_Base_URI" -Value $BaseURI -Option ReadOnly -Scope global -Force
