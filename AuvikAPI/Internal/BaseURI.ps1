@@ -6,7 +6,7 @@ function Add-AuvikBaseURI {
         [string]$BaseURI = 'https://auvikapi.us1.my.auvik.com',
 
         [Alias('locale','dc')]
-        [ValidateSet( 'US', 'EU')]
+        [ValidateSet( 'US1', 'US2', 'EU1', 'EU2', 'AU1')]
         [String]$data_center = ''
     )
 
